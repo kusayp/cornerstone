@@ -1,0 +1,76 @@
+ {% extends "base.html" %}  
+{% load staticfiles %}
+{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block content %} 
+ <main class="main main--subpage main--default">
+        <!-- BEGIN BREADCRUMBS-->
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Authorization</a></li>
+            </ul>
+          </div>
+        </nav>
+        <!-- END BREADCRUMBS-->
+        <!-- BEGIN MAIN HEAD-->
+        <header class="main__head">
+          <h1 class="main__title">Authorization</h1>
+        </header>
+        <!-- END MAIN HEAD-->
+        <div class="container">
+          <div class="main__wrap">
+            <!-- BEGIN MAIN CONTENT-->
+            <div class="main__content">
+              <!-- BEGIN WIDGET-->
+              <div class="widget js-widget widget--card">
+                <!-- BEGIN WIDGET HEADER-->
+                <div class="widget__header">
+                  <h2 class="widget__title js-widget-title">Login</h2>
+                </div>
+                <!-- END WIDGET HEADER-->
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                  <div class="auth--inline">
+                    <!-- BEGIN AUTH LOGIN-->
+                    <form action="{% url 'login' %}"" method="POST" class="form form--auth form--login js-parsley">{% csrf_token %}
+                      <h5 class="form__title">Login in your account</h5>
+                      <div class="row">
+                        <div class="form-group">
+                          <label for="login-username-inline" class="control-label">Email</label>
+                          {{form.username}}
+                          <!-- <input type="text" name="username" id="login-username-inline" required data-parsley-trigger="keyup" data-parsley-minlength="6" data-parsley-validation-threshold="5" data-parsley-minlength-message="Login should be at least 6 chars" class="form-control"> -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group">
+                          <label for="login-password-inline" class="control-label">Password</label>
+                          {{form.password}}
+                          <!-- <input type="password" name="password" id="login-password-inline" required class="form-control"> -->
+                        </div>
+                      </div>
+                      <div class="row"><a href="user_restore_pass.html" class="form__forgot">Forgot password ?</a>
+                      <input type="hidden" name="next" value="{{ next }}" />
+                        <button type="submit" class="btn--flat form__submit">Sign in</button>
+                      </div>
+                      <div class="row"><span class="form__remember">
+                          <input type="checkbox" id="remember-in-inline" class="in-checkbox">
+                          <label for="remember-in-inline" class="in-label">Remember me</label></span><span class="form__links">Not a user yet?<a href="user_register.html">Get an account</a></span></div>
+                    </form>
+                    <!-- end of block .form-login-->
+                    <!-- END FORM LOGIN-->
+                  </div>
+                </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              <!-- END WIDGET-->
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- BEGIN SIDEBAR-->
+            <aside class="sidebar">
+            </aside>
+            <!-- END SIDEBAR-->
+          </div>
+        </div>
+      </main>
+     {% endblock %}

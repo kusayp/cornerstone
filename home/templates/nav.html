@@ -1,0 +1,48 @@
+<nav class="nav js-nav nav--v3 nav--v5 js-nav-onclick"> 
+    <ul class="nav__list">
+    <li class="nav__item nav__item--lvl-1"><a href="{% url 'home' %}" class="nav__link ">Home</a>
+    </li>
+      <li class="nav__item nav__item--lvl-1 js-nav-item  has-children"><a href="javascript:;" class="nav__link active">About Us</a>
+        <div class="nav__sub">
+          <ul class="nav__list">
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'wwb' %}" class="nav__link ">What We Believe</a>
+            </li>
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'devotion' %}" class="nav__link ">Devotion</a>
+            </li>
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'message' %}" class="nav__link ">Get Saved</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav__item nav__item--lvl-1"><a href="{% url 'event' %}" class="nav__link">Events</a>
+    </li>
+    <li class="nav__item nav__item--lvl-1 js-nav-item  has-children"><a href="javascript:;" class="nav__link active">Ministries</a>
+        <div class="nav__sub">
+          <ul class="nav__list">
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'men' %}" class="nav__link ">Men Fellowship</a>
+            </li>
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'women' %}" class="nav__link">Women Fellowship</a>
+            </li>
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'youth' %}" class="nav__link">Youth Fellowship</a>
+            </li>
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'children' %}" class="nav__link">Children Fellowship</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav__item nav__item--lvl-1 js-nav-item  has-children"><a href="javascript:;" class="nav__link active">Resources</a>
+        <div class="nav__sub">
+          <ul class="nav__list">
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'sermon' %}" class="nav__link ">Sermons</a>
+            </li>
+            <li class="nav__item nav__item--lvl-sub"><a href="{% url 'hymn' %}" class="nav__link">Hymns</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav__item nav__item--lvl-1"><a href="{% url 'contact' %}" class="nav__link">Contact Us</a>
+    </li>
+    <!-- <li class="nav__item nav__item--lvl-1"><a href="{% url 'devotion' %}" class="btn--flat-rounded header__donate">Devotion</a></li>
+    <li class="nav__item nav__item--lvl-1"><a href="{% url 'message' %}" class="btn--flat-rounded header__donate">Get Saved</a></li> -->
+    </ul>
+  </nav>

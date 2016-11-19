@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block content %}
+<main class="main main--subpage main--default">
+        <!-- BEGIN BREADCRUMBS-->
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">{{title}}</a></li>
+            </ul>
+          </div>
+        </nav>
+        <!-- END BREADCRUMBS-->
+        <!-- BEGIN MAIN HEAD-->
+        <header class="main__head">
+          <h1 class="main__title">{{title}}</h1>
+        </header>
+        <!-- END MAIN HEAD-->
+        <div class="container">
+          <div class="main__wrap">
+            <!-- BEGIN MAIN CONTENT-->
+            {% for item in messages %}
+            <div class="main__content">
+              <!-- BEGIN WIDGET-->
+              <div class="widget js-widget widget--card">
+                <!-- BEGIN WIDGET HEADER-->
+                <div class="widget__header">
+                  <h2 class="widget__title js-widget-title">{{item.title | safe }}</h2>
+                </div>
+                <!-- END WIDGET HEADER-->
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                  <div class="post post--details">
+                    <div class="post__description"><img src="{% static 'media-demo/post/post-3.jpg' %}" style="float: right; margin: 10px 0 10px 20px;" alt="">
+                      <p>{{item.content | safe }}</p>
+                  </div>
+                </div>
+              </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              <!-- END WIDGET-->
+            </div>
+            {% endfor %}
+            <!-- END MAIN CONTENT-->
+          </div>
+        </div>
+      </main>
+    {% endblock %}

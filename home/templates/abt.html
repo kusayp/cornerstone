@@ -1,0 +1,12 @@
+<div class="widget js-widget widget--about">
+          {% for item in abouts %}
+          <div class="widget__content"> 
+            <div class="widget__title">About our Church</div>
+            <div class="about about--simple">
+              <div class="about__details">
+                {{ item.content | safe |truncatewords:15}}.<a href="{% url 'about' item.slug %}" class="btn--link about__more">Read more</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>

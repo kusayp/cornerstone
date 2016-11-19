@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="">{% endblock %}
+{% block content %} 
+<main class="main main--subpage main--sermons">
+        <nav class="breadcrumbs">
+          <div class="container"> 
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><a href="{% url 'sermon' %}" class="breadcrumbs__link">Our sermons</a></li>
+            </ul>
+          </div>
+        </nav>
+        <header class="main__head">
+          <h1 class="main__title">{{title}}</h1>
+        </header>
+        <div class="container">
+          <div class="main__wrap">
+            <div class="main__content">
+              <div class="widget js-widget widget--listing">
+              <input type="hidden" value="{{ api_token }}" id="api_token"/>
+                <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
+                <div class="widget__content">
+                  <div data-modifier="list" data-view="sermon" class="sermon sermon--list js-switch-view js-sermon">
+                    <div class="listing listing--list">
+                    <!-- {% for item in sermons %} -->
+                      <div class="listing__item" id="sermon"> 
+                        
+                      </div>
+                      <!-- {% endfor %} -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div id="sermon_pagination" class="col-md-12"></div>
+              </div>
+            </div>
+            <aside class="sidebar">
+              <div class="widget js-widget widget--sidebar">
+                <div class="widget__header">
+                  <h3 class="widget__title js-widget-title">Sermon categories</h3>
+                </div>
+                <div class="widget__content">
+                  <ul class="list" id="categorys">
+                  {% for item in categorys %}
+                    <li class="list__item"><a id="category_{{ item.id }}" data-key="{{ item.id }}" class="category"  href="{% url 'category_detail' item.name %}" class="list__link">{{ item.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <div class="widget js-widget widget--sidebar">
+                <div class="widget__header">
+                  <h3 class="widget__title js-widget-title">Coming sermon</h3>
+                </div>
+                {% for item in word %}
+                <div class="widget__content">
+                  <div class="event event--sidebar">
+                    <div class="event__item">
+                      <div class="event__details">
+                        <div class="event__intro">
+                          {{item.content | safe }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              
+            </aside>
+          </div>
+        </div>
+      </main>
+{% endblock %}
+{% block hymnjs %}<script type="text/javascript" src="{% static 'js/sermon.js' %}"></script>
+<script type="text/javascript">
+  console.log('test');
+  $(document).ready(function() {
+    console.log('test');
+    hymn.init();
+  });
+</script>
+
+{% endblock %}
+

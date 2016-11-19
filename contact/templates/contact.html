@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block content %}
+<main class="main main--subpage main--about">
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item">Contact us</li>
+            </ul>
+          </div>
+        </nav>
+        <header class="main__head">
+          <h1 class="main__title">Contact us</h1>
+        </header>
+       <div class="container">
+          <div class="main__wrap">
+          <div class="main__content">
+              <div class="widget js-widget widget--card widget--details">
+                <div class="widget__header">
+                  <h2 class="widget__title js-widget-title">Pastor's Word</h2>
+                </div>
+               <div class="widget__content">
+                  <div class="post post--details">
+                    <div class="post__description">
+                      {% for item in address %}
+                      <blockquote><p>{{item.content}}</p><footer>{{item.name}}</footer></blockquote>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+             <div class="widget js-widget widget--card">
+               <div class="widget__content">
+                  <section class="contacts">
+                    <div class="contacts__form">
+                      <h3>Send us your Prayer Request</h3>
+                      <form action="#" method="POST" class="form js-parsley form--contacts" role="form" id="contact">{% csrf_token %}
+                        <div class="row">
+                          <div class="form-group form-group--lg-4">
+                            <label for="contacts-name" class="control-label"></label>
+                            {{ form.name }}
+                          </div> 
+                          <div class="form-group form-group--lg-4">
+                            <label for="contacts-email" class="control-label"></label>
+                            {{ form.email }}
+                          </div>
+                          <div class="form-group form-group--lg-4">
+                            <label for="contacts-phone" class="control-label"></label>
+                            {{ form.phone }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group form-group--lg-12">
+                            <label for="contacts-message" class="control-label"></label>
+                            {{ form.content }}
+                          </div>
+                        </div>
+                        <div class="form__buttons">
+                          <button type="submit" class="btn--flat form__btn">Submit</button>
+                        </div>
+                      </form>
+                      <!-- END FORM-->
+                    </div>
+                    <div class="contacts__info">
+                      <div class="social social--footer">
+                        <h3>Our Social Media Networks</h3>
+                        <div class="social__list"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="social__item"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="social__item"><i class="fa fa-youtube"></i></a></div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+\              </div>
+            </div>
+            <aside class="sidebar">
+            </aside>
+          </div>
+        </div>
+      </main>
+{% endblock %}
+{% block hymnjs %}<script type="text/javascript" src="{% static 'js/contact.js' %}"></script>
+<script type="text/javascript">
+  console.log('test');
+  $(document).ready(function() {
+    console.log('test');
+    // hymn.init();
+  });
+</script>
+
+{% endblock %}

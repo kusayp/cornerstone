@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="">{% endblock %}
+{% block content %} 
+<main class="main main--subpage main--sermons">
+        <nav class="breadcrumbs">
+          <div class="container"> 
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><a href="{% url 'sermon' %}" class="breadcrumbs__link">Our sermons</a></li>
+            </ul>
+          </div>
+        </nav>
+        <header class="main__head">
+          <h1 class="main__title">{{title}}</h1>
+        </header>
+        <div class="container">
+          <div class="main__wrap">
+            <div class="main__content">
+              <div class="widget js-widget widget--listing">
+                <div class="widget__content">
+                  <div data-modifier="list" data-view="sermon" class="sermon sermon--list js-switch-view js-sermon">
+                    <div class="listing listing--list">
+                    <input type="hidden" value="{{ api_token }}" id="api_token"/>
+                <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
+                    {% for item in categorys %}
+                      <div class="listing__item">
+                        <div data-id='0' class="sermon__item js-sermon-item">
+                          <!-- <div class="sermon__video">////data-poster="{% static 'media-demo/sermons/1794x1010/sermon-1.jpg' %}" data-video="http://codefactory47.com/public/webelieve/media/video-1" data-audio="http://codefactory47.com/public/webelieve/media/Psalms_023" data-href="sermon_details.html" ////
+                            <div class="plyr">
+                              <video poster="{% static 'media-demo/sermons/1794x1010/sermon-1.jpg' %}" controls="">
+                                <source src="http://codefactory47.com/public/webelieve/media/video-1.mp4" type="video/mp4">
+                                <source src="http://codefactory47.com/public/webelieve/media/video-1.webm" type="video/webm">
+                              </video>
+                            </div>
+                          </div> -->
+                          <!-- <div class="sermon__audio">
+                            <div class="plyr">
+                              <audio controls crossorigin>
+                                <source src="http://codefactory47.com/public/webelieve/media/Psalms_023.mp3" type="audio/mp3">
+                              </audio>
+                            </div>
+                          </div> -->
+                          <a data-id="{{ item.id }}" id="sermons" class="sermon__preview"><img src="{% static 'media-demo/post/post-3.jpg' %}" alt="" class="sermon__preview-img">
+                            <figure class="sermon__ministry">
+                              <figcaption class="sermon__ministry-name">Pastor - <strong>{{ item.author | safe }}</strong></figcaption>
+                            </figure></a>
+                          <div class="sermon__info">
+                            <time datetime="2016" class="sermon__time">{{ item.date }}</time>
+                            <h3 class="sermon__name"><a href="{% url 'sermon_detail' item.id %}">{{ item.title | safe }}</a></h3>
+                            <div class="sermon__intro">
+                              <p>{{ item.content | safe |truncatewords:20 }}</p> 
+                            </div>
+                            <div class="clearfix"></div>
+                            <a href="{% url 'sermon_detail' item.id %}" class="btn--link event__more">Read more</a>
+                          </div>
+                          <div class="sermon__bar">
+                            <!-- <div class="sermon__links"><a class="sermon__link-item js-sermon-video">
+                                <svg class="sermon__link-svg">
+                                  <use xlink:href="#icon-video"></use>
+                                </svg></a><a class="sermon__link-item js-sermon-audio">
+                                <svg class="sermon__link-svg">
+                                  <use xlink:href="#icon-audio"></use>
+                                </svg></a><a href="http://codefactory47.com/public/webelieve/media/Psalms_023.mp3" target="_blank" class="sermon__link-item">
+                                <svg class="sermon__link-svg">
+                                  <use xlink:href="#icon-speaker"></use>
+                                </svg></a><a href="http://codefactory47.com/public/webelieve/media/notes.pdf" target="_blank" class="sermon__link-item">
+                                <svg class="sermon__link-svg">
+                                  <use xlink:href="#icon-file"></use>
+                                </svg></a></div> -->
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <nav class="pagination">{% if categorys.has_previous %}<a href="?page={{ categorys.previous_page_number }}" class="pagination__btn">
+                  <svg class="pagination__btn-svg">
+                    <use xlink:href="#icon-arrow-left"></use>
+                  </svg><span class="pagination__btn-span"> Previous sermon</span></a>{% endif %}
+                <ul class="pagination__pages">
+                {% for num in categorys.paginator.page_range %}
+                {% ifequal num categorys.number %}
+                  <li class="active"><span>{{num}}</span></li>
+                  {% else %}
+                  <li><a href="?page={{num}}">{{num}}</a></li>
+                  {% endifequal %}
+                  {% endfor %}
+                </ul>{% if categorys.has_next %}<a href="?page={{ categorys.next_page_number }}" class="pagination__btn"><span class="pagination__btn-span">Next sermon</span>
+                  <svg class="pagination__btn-svg">
+                    <use xlink:href="#icon-arrow-right"></use>
+                  </svg></a>{% endif %}
+              </nav>
+            </div>
+            <aside class="sidebar">
+              <div class="widget js-widget widget--sidebar">
+                <div class="widget__header">
+                  <h3 class="widget__title js-widget-title">Sermon categories</h3>
+                </div>
+                <div class="widget__content">
+                  <ul class="list">
+                  {% for item in category %}
+                    <li class="list__item"><a href="{% url 'category_detail' item.name %}" class="list__link">{{ item.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <div class="widget js-widget widget--sidebar">
+                <div class="widget__header">
+                  <h3 class="widget__title js-widget-title">Coming sermon</h3>
+                </div>
+                {% for item in word %}
+                <div class="widget__content">
+                  <div class="event event--sidebar">
+                    <div class="event__item">
+                      <div class="event__details">
+                        <div class="event__intro">
+                          {{item.content | safe }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              
+              <!-- <div class="widget js-widget widget2-sidebar"> -->
+                <!-- <div class="widget__header">
+                  <h3 class="widget__title js-widget-title">Sermon archives</h3>
+                </div> -->
+                <!-- <div class="widget__content">
+                  <ul class="list">
+                    <li class="list__item"><a class="list__link">September 2015  (3)</a></li>
+                    <li class="list__item"><a class="list__link">July 2015  (1)</a></li>
+                    <li class="list__item"><a class="list__link">June 2015  (1)</a></li>
+                    <li class="list__item"><a class="list__link">April 2015  (5)</a></li>
+                    <li class="list__item"><a class="list__link">February 2015  (2)</a></li>
+                    <li class="list__item"><a class="list__link">December 2014  (1)</a></li>
+                    <li class="list__item"><a class="list__link">October 2014  (2)</a></li>
+                  </ul>
+                </div> -->
+              <!-- </div> -->
+            </aside>
+          </div>
+        </div>
+      </main>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="">{% endblock %}
+{% block content %}
+<main class="main main--subpage main--default">
+        <!-- BEGIN BREADCRUMBS-->
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">{{title}}</a></li>
+            </ul>
+          </div>
+        </nav>
+        <!-- END BREADCRUMBS-->
+        <!-- BEGIN MAIN HEAD-->
+        <header class="main__head">
+          <h1 class="main__title">{{title}}</h1>
+        </header>
+        <!-- END MAIN HEAD-->
+        <div class="container">
+          <div class="main__wrap">
+            <!-- BEGIN MAIN CONTENT-->
+            
+            <div class="main__content">
+              <!-- BEGIN WIDGET-->
+              <div class="widget js-widget widget--card">
+                <!-- BEGIN WIDGET HEADER-->
+                <div class="widget__header">
+                  <h2 class="widget__title js-widget-title">{{pastors.name | safe }}</h2>
+                </div>
+                <!-- END WIDGET HEADER-->
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                  <div class="post post--details">
+                    <div class="post__description"><img src="{% static 'media-demo/post/post-3.jpg' %}" style="float: right; margin: 10px 0 10px 20px;" alt="">
+                      <p>{{pastors.background | safe }}</p>
+                  </div>
+                </div>
+              </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              <!-- END WIDGET-->
+            </div>
+            
+            <!-- END MAIN CONTENT-->
+             <aside class="sidebar">
+              <!-- BEGIN WIDGET-->
+              <div class="widget js-widget widget--sidebar">
+                <!-- BEGIN WIDGET HEADER-->
+                <div class="widget__header">
+                  <h3 class="widget__title js-widget-title">Pastors</h3>
+                </div>
+                <!-- END WIDGET HEADER-->
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                  <ul class="list">
+                  {% for item in pastor %}
+                    <li class="list__item"><a href="{% url 'pastor' item.id %}" class="list__link">{{ item.name }}</a></li>
+                  {% endfor %}
+                  </ul>
+                </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              <!-- END WIDGET-->
+              <!-- END WIDGET-->
+            </aside>
+          </div>
+        </div>
+      </main>
+    {% endblock %}

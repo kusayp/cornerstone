@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block content %}  
+  <main class="main main--subpage main--blog">
+        <!-- BEGIN BREADCRUMBS-->
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">{{ title }}</a></li>
+            </ul>
+          </div>
+        </nav>
+        <!-- END BREADCRUMBS-->
+        <!-- BEGIN MAIN HEAD-->
+        <header class="main__head">
+          <h1 class="main__title">{{ title }}</h1>
+        </header>
+        <!-- END MAIN HEAD-->
+        <div class="container">
+          <div class="main__wrap">
+            <!-- BEGIN MAIN CONTENT-->
+            <div class="main__content">
+              <!-- BEGIN WIDGET-->
+              <div class="widget js-widget widget--listing"> 
+                <!-- END WIDGET HEADER-->
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                <input type="hidden" value="{{ api_token }}" id="api_token"/>
+                <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
+                  <div data-view="post" class="post post--grid post--masonry js-switch-view">
+                    <!-- <div class="listing listing--grid js-isotope-grid" id="wwb_list"> 
+            </div> -->
+            <div class="accordion col-md-12 center" id="wwb_list">
+                  </div>
+          </div>
+        </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              <!-- END WIDGET--> 
+             <!--  <nav class="pagination">{% if wwbs.has_previous %}<a href="?page={{ wwbs.previous_page_number }}" class="pagination__btn">
+                  <svg class="pagination__btn-svg">
+                    <use xlink:href="#icon-arrow-left"></use>
+                  </svg><span class="pagination__btn-span"> Previous</span></a>{% endif %}
+                <ul class="pagination__pages">
+                {% for num in wwbs.paginator.page_range %}
+                {% ifequal num wwbs.number %}
+                  <li class="active"><span>{{num}}</span></li>
+                  {% else %}
+                  <li><a href="?page={{num}}">{{num}}</a></li>
+                  {% endifequal %}
+                  {% endfor %}
+                </ul>{% if wwbs.has_next %}<a href="?page={{ wwbs.next_page_number }}" class="pagination__btn"><span class="pagination__btn-span">Next</span>
+                  <svg class="pagination__btn-svg">
+                    <use xlink:href="#icon-arrow-right"></use>
+                  </svg></a>{% endif %}
+              </nav>         -->  
+              <div class="row">
+                    <div class="col-md-12 center"  id="hymn_pagination"></div>
+                  </div> 
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- BEGIN SIDEBAR-->
+            <!-- <aside class="sidebar">
+            </aside> -->
+            <!-- END SIDEBAR-->
+          </div>
+        </div>
+      </main>
+{% endblock %}
+{% block hymnjs %}<script type="text/javascript" src="{% static 'js/try.js' %}"></script>
+<script type="text/javascript">
+  console.log('test');
+  $(document).ready(function() {
+    console.log('test');
+    hymn.init();
+  });
+</script>
+
+{% endblock %}

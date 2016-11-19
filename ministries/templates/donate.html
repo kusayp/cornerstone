@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<h2 class="widget__title">{{ item.name |safe }}</h2>
+<div class="widget__preview"><a><img src="{% static 'media-demo/causes/cause-details.jpg' %}" alt="" class="widget__preview-img"></a></div>
+<div class="widget__description">
+  {{ item.content|safe }}
+</div>
+<div class="cause__donation">
+  <div class="cause__counter">
+    <div class="cause__circle">
+      <img src="{% static 'media-demo/causes/cause-details.jpg' %}" alt="" class="widget__preview-img">
+    </div>
+  </div>
+  <div class="cause__info">
+    <ul class="cause__info-list">
+      <li class="cause__info-item cause__info-item--total">
+        <svg class="cause__info-svg cause__info-svg--heart">
+          <use xlink:href="#icon-heart"></use>
+        </svg><strong>{{ item.email|safe }}</strong>
+      </li>
+      <li class="cause__info-item cause__info-item--remaining">
+        <svg class="cause__info-svg">
+          <use xlink:href="#icon-money"></use>
+        </svg><strong>{{ item.contacts|safe }}</strong>
+      </li>
+      <li class="cause__info-item cause__info-item--days">
+        <svg class="cause__info-svg cause__info-svg--calendar">
+          <use xlink:href="#icon-calendar"></use>
+        </svg><strong>{{ item.time|safe }}</strong>
+      </li>
+    </ul>
+  </div>
+  <div class="clearfix"></div>
+  <h5 class="cause__mess">Thanks for your interest in supporting our ministry!</h5><a href="#" class="btn--flat cause__donate--big js-cause-donate-btn">Donate Now</a>
+  <div class="cause__form js-cause-donate-form js-parsley">
+    <h3>Donation information</h3>
+    <form action="." method="POST" class="form js-parsley" role="form">{% csrf_token %}
+      <h5>I would like to make a donation in the amount of:</h5>
+      <div class="row">
+        <div class="form-group form-group--lg-6">
+          {{form.firstname}}
+        </div>
+        <div class="form-group form-group--lg-6">
+          {{form.lastname}}
+        </div>
+        <div class="form-group form-group--lg-6">
+          {{form.email}}
+        </div>
+        <div class="form-group form-group--lg-6">
+          {{form.phone}}
+        </div>
+        <div class="form-group form-group--lg-6">
+          <label class="control-label"></label>
+          {{form.city}}
+        </div>
+        <div class="form-group form-group--lg-6">
+          {{form.address}}
+        </div>
+        <div class="form-group form-group--lg-6">
+          {{form.ministry}}
+        </div>
+        <div class="form-group form-group--lg-6">
+          {{form.amount}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="anonymous" class="in-label"><em>Donor will remian anonymous</em></label>
+        </div>
+      </div>
+      <div class="cart cart--account">
+        <div class="cart__submit">
+          <button class="btn--flat cart__btn" type="submit">Donate</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="widget__footer">
+  <div></div>
+  <div class="social social--right">
+    <div class="social__list"><a href="#" class="social__item" title="Facebook"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a><a href="#" class="social__item"><i class="fa fa-google-plus"></i></a></div>
+  </div>
+</div>

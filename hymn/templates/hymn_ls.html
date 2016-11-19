@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="sidebar-hide">{% endblock %} 
+{% block content %}
+<main class="main main--subpage main--default">
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">{{title}}</a></li>
+            </ul>
+          </div>
+        </nav>
+        <header class="main__head">
+          <h1 class="main__title">{{ title }}</h1>
+        </header>
+        <div class="container">
+          <div class="main__wrap">
+          <aside class="sidebar">
+\              <div class="widget js-widget widget--sidebar">
+                <div class="widget__header">
+                  <h3 class="widget__title js-widget-title">Hymnals</h3>
+                </div>
+                <input type="hidden" value="{{ api_token }}" id="api_token"/>
+                <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
+                <div class="widget__content">
+                  <ul class="list">
+                  </ul>
+                </div>
+              </div>
+            </aside>
+            <div class="main__content">
+              <div class="widget js-widget widget--card" style="padding-top: 20px ; padding-bottom: 20px">
+              <div class="accordion col-md-8 col-md-offset-2 center" id="hymns">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 center"  id="hymn_pagination"></div>
+                  </div>
+              </div>
+            </div>
+           </div>
+        </div>
+      </main>
+{% endblock %}
+{% block hymnjs %}<script type="text/javascript" src="{% static 'js/hymn.js' %}"></script>
+<script type="text/javascript">
+  console.log('test');
+  $(document).ready(function() {
+    console.log('test');
+    hymn.init();
+  });
+</script>
+
+{% endblock %}
+

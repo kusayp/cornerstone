@@ -1,0 +1,35 @@
+{% extends "base.html" %}  
+{% load staticfiles %}
+{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block content %} 
+  <main class="main main--subpage main--events">
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item">{{title}}</li>
+            </ul>
+          </div>
+        </nav>
+        <header class="main__head">
+          <h1 class="main__title">{{title}}</h1>
+        </header>
+        <div class="container">
+          <div class="main__wrap">
+            <div class="main__content">
+              <div class="widget js-widget widget--card widget--details">
+                <div class="widget__content">
+                  <div class="cause cause--details">
+                  {% for item in womens %}
+                    {% include 'donate.html' %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+           <aside class="sidebar">
+            </aside>
+          </div>
+        </div>
+      </main>
+{% endblock %}
