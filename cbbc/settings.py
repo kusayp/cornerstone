@@ -132,7 +132,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cbbc.wsgi.application'
 
-API_KEY = '5dbb0af0bc242a80db5f2a7e9ca2aed7f1b80821'
+API_KEY = '31a510b333eee6e5813ad1813ee6a54d1e5c5109'
 
 # Database  f32edbd93b669e943fadf6ec9353f1680cf70cff    
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
