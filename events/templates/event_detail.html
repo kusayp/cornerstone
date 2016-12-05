@@ -75,7 +75,7 @@
                     </div>
                     <h5 class="event__mess">Register on the event right now!</h5><a href="#" class="btn--flat event__register js-event-register-btn">Register</a> 
                     <div class="event__form js-event-register-form">
-                     <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
+                     <input type="hidden" id="request_context" value="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}"/>
                       <!-- BEGIN FORM-->
                       <form  class="form js-parsley form--comment" id="contact" role="form" method="POST">
                       <!-- {% csrf_token %} -->

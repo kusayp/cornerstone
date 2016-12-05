@@ -22,7 +22,7 @@
                   <div data-modifier="list" data-view="sermon" class="sermon sermon--list js-switch-view js-sermon">
                     <div class="listing listing--list">
                     <input type="hidden" value="{{ api_token }}" id="api_token"/>
-                <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
+                <input type="hidden" id="request_context" value="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}"/>
                     {% for item in categorys %}
                       <div class="listing__item">
                         <div data-id='0' class="sermon__item js-sermon-item">
