@@ -13,3 +13,4 @@ static==1.1.1
 static3==0.7.0
 django-jet
 django-summernote
+django-pagination
