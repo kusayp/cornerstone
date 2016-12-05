@@ -2321,43 +2321,43 @@ input[type="radio"] + labe {
 }
 
 .main--events {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 .main--sermons {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 .main--blog {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 .main--community {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 .main--about {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png")  no-repeat 50% 0;
 }
 
 .main--errors {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 .main--shop {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 .main--causes {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 .main--default {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 .main--gallery {
-  background: url("../media-demo/backgrounds/bg-subpage.png") #f5f5f5 no-repeat 50% 0;
+  background: url("../media-demo/backgrounds/bg-subpage.png") no-repeat 50% 0;
 }
 
 /*------------------------------------------------------------------
@@ -13734,7 +13734,7 @@ a.fc-more:hover {
 }
 
 .event__preview-img {
-  width: 100%;
+  /*width: 100%;*/
 }
 
 .event__status {

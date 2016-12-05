@@ -7,5 +7,5 @@ class SubscribeForm(forms.ModelForm):
 		model = Subscribe
 		fields = ['email'] 
 		widgets = {
-            'email': forms.TextInput(attrs={'class': 'form-control', 'required': 'true', 'placeholder': 'Your Email', 'id':'email'}), 
+            'email': forms.TextInput(attrs={'class': 'form-control', 'onFocus': "this.value=''", 'required': 'true', 'placeholder': 'Your Email', 'id':'email'}), 
         }

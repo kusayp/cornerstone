@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block body %}<body class="sidebar-hide bg-white_brick_wall">{% endblock %}
 {% block content %}
 <main class="main main--subpage main--about">
         <nav class="breadcrumbs">
@@ -25,7 +25,7 @@
                   <div class="post post--details">
                     <div class="post__description">
                       {% for item in address %}
-                      <blockquote><p>{{item.content}}</p><footer>{{item.name}}</footer></blockquote>
+                      <blockquote>{{item.content | safe}}<footer>{{item.name}}</footer></blockquote>
                       {% endfor %}
                     </div>
                   </div>
@@ -69,6 +69,10 @@
                         <div class="social__list"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a>
                         <a href="#" class="social__item"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="social__item"><i class="fa fa-youtube"></i></a></div>
+                      </div>
+                      <div class="address address--contacts">
+                        <h3>Provide Us Your Details</h3>
+                        <p>Please click here <a href="{% url 'registration' %}">Register</a> to provide us your information if you are a member of <strong>Cornerstone Biblical Baptist Church</strong></p>
                       </div>
                     </div>
                   </section>

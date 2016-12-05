@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block body %}<body class="">{% endblock %}
+{% block body %}<body class="bg-white_brick_wall">{% endblock %}
 {% block content %} 
 <main class="main main--subpage main--sermons">
         <nav class="breadcrumbs">
           <div class="container"> 
             <ul>
               <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
-              <li class="breadcrumbs__item"><a href="{% url 'sermon' %}" class="breadcrumbs__link">Our sermons</a></li>
+              <li class="breadcrumbs__item">{{title}}</li>
             </ul>
           </div>
         </nav>
@@ -52,7 +52,7 @@
               </div>
               <div class="widget js-widget widget--sidebar">
                 <div class="widget__header">
-                  <h3 class="widget__title js-widget-title">Coming sermon</h3>
+                  <h3 class="widget__title js-widget-title">Inspiration</h3>
                 </div>
                 {% for item in word %}
                 <div class="widget__content">

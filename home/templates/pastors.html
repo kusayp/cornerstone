@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block body %}<body class="">{% endblock %}
+{% block body %}<body class="bg-white_brick_wall">{% endblock %}
 {% block content %}
 <main class="main main--subpage main--default">
         <!-- BEGIN BREADCRUMBS-->
@@ -8,7 +8,7 @@
           <div class="container">
             <ul>
               <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
-              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">{{title}}</a></li>
+              <li class="breadcrumbs__item">{{title}}</li>
             </ul>
           </div>
         </nav>
@@ -22,7 +22,7 @@
           <div class="main__wrap">
             <!-- BEGIN MAIN CONTENT-->
             
-            <div class="main__content">
+         <div class="main__content">
               <!-- BEGIN WIDGET-->
               <div class="widget js-widget widget--card">
                 <!-- BEGIN WIDGET HEADER-->
@@ -32,16 +32,43 @@
                 <!-- END WIDGET HEADER-->
                 <!-- BEGIN WIDGET CONTENT-->
                 <div class="widget__content">
-                  <div class="post post--details">
-                    <div class="post__description"><img src="{% static 'media-demo/post/post-3.jpg' %}" style="float: right; margin: 10px 0 10px 20px;" alt="">
-                      <p>{{pastors.background | safe }}</p>
-                  </div>
+                  <section class="member member--details">
+                    <div class="member__row">
+                      <figure class="member__photo"><img src="/static/media-demo/{{pastors.img_url}}.jpg" alt="" class="member__img"></figure>
+                      <div class="member__info">
+                        <dl class="dl-table">
+                          <dt>Title</dt>
+                          <dd>{{pastors.role}}</dd>
+                          <dt>Ministry</dt>
+                          <dd>{{pastors.ministry}}</dd>
+                          <dt>Telephone</dt>
+                          <dd><a>+233 {{pastors.phone | safe}}</a></dd>
+                          <dt>Email</dt>
+                          <dd><a>{{pastors.email | safe}}</a></dd>
+                        </dl>
+                        <!-- <div class="member__social">
+                          <div class="social social--left">
+                            <div class="social__list"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a><a href="#" class="social__item"><i class="fa fa-google-plus"></i></a></div>
+                          </div>
+                        </div> -->
+                        <dl class="dl-list">
+                          <dt>Languages that <b>{{pastors.name | safe }}</b> can speak:</dt>
+                          <dd>{{pastors.languages}}.</dd>
+                          <dt>Favorite Bible passage:</dt>
+                          <dd>{{pastors.fav_verse}}.</dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div class="member__descr">
+                      {{pastors.background | safe }}
+                    </div>
+                  </section>
                 </div>
-              </div>
                 <!-- END WIDGET CONTENT-->
               </div>
               <!-- END WIDGET-->
             </div>
+            
             
             <!-- END MAIN CONTENT-->
              <aside class="sidebar">

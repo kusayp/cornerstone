@@ -5,10 +5,6 @@ var hymn= function(){
 	var numberPerPage=3;
 
 	var ajaxCall=function(){
-		console.log('token',api_token.val());
-		// $('.list__item').find('a').on('click', function(){
-		// 	var $this=$(this);
-
 			$.ajax({
 				url:request_context.val()+'/api/v1.0/sermon/',
 				method: 'get',
@@ -31,7 +27,6 @@ var hymn= function(){
 										headers: {'Authorization': 'Token '+ api_token.val()}
 									}).done(function(data1){
 										populateHymns(data1);
-										console.log(data1);
 
 									}).fail(function(err){
 										console.log(err);
@@ -50,7 +45,7 @@ var hymn= function(){
 				for (var i = 0; i < data.results.length; i++) {
 					sermon.append($(document.createElement('div')).attr('data_id', 0).addClass('sermon__item js-sermon-item')
 						.append($(document.createElement('a')).addClass('sermon__preview')
-							.append($(document.createElement('img')).attr('src', "/static/media-demo/post/post-3.jpg").addClass('sermon__preview-img')
+							.append($(document.createElement('img')).attr('src', "/static/media-demo/post/sermon.jpg").addClass('sermon__preview-img')
 								)
 							.append($(document.createElement('figure')).addClass('sermon__ministry')
 								.append($(document.createElement('figcaption')).addClass('sermon__ministry-name')
@@ -78,21 +73,17 @@ var hymn= function(){
 		e.preventDefault();
 		var page = $(this);
 		var category_num = page.attr('data-key');
-		console.log(category_num);
 		$.ajax({
 			url:request_context.val()+'/api/v1.0/sermon_categories/',
 			method:'get',
 			headers: {'Authorization': 'Token '+api_token.val()}
 		}).done(function(data){
-			console.log(data);
 			sermon.html('');
 			if (data) {
 				for (var i = 0; i < data.results.length; i++) {
 					a = data.results[i].id
-					console.log(a);
 					if (a == parseInt(category_num)) {
 						for(ind in data.results[i].sermons){
-							console.log('working');
 							sermon.append($(document.createElement('div')).attr('data_id', 0).addClass('sermon__item js-sermon-item')
 						.append($(document.createElement('a')).addClass('sermon__preview')
 							.append($(document.createElement('img')).attr('src', "/static/media-demo/post/post-3.jpg").addClass('sermon__preview-img')

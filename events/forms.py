@@ -7,7 +7,7 @@ class RegisterForm(forms.ModelForm):
 		model = Register 
 		fields = ['name', 'email', 'phone']  
 		widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'name':'name', 'required': 'true', 'placeholder': 'Your Name'}), 
-            'email': forms.TextInput(attrs={'class': 'form-control', 'name':'email', 'required': 'true', 'placeholder': 'Your Email', 'type' : 'email'}), 
-            'phone': forms.TextInput(attrs={'class': 'form-control', 'name':'phone', 'required': 'true', 'placeholder': 'Your Mobile Number'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'onFocus': "this.value=''", 'name':'name', 'required': 'true', 'placeholder': 'Your Name'}), 
+            'email': forms.TextInput(attrs={'class': 'form-control', 'onFocus': "this.value=''", 'name':'email', 'required': 'true', 'placeholder': 'Your Email', 'type' : 'email'}), 
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'onFocus': "this.value=''", 'name':'phone', 'required': 'true', 'placeholder': 'Your Mobile Number'}),
         }

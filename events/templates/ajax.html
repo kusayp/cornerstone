@@ -1,33 +1,16 @@
   {% load staticfiles %}
   {% for item in categorys %}
-                      <div class="listing__item">
-                        <div class="event__item js-event-item">
-                          <div class="event__preview"><span class="event__status"></span><a href="{% url 'event_detail' item.id %}" class="event__preview-link"><img src="{% static 'media-demo/post/post-3.jpg' %}" alt="" class="event__preview-img"></a>
-                            <!-- <div class="event__links"><a class="event__link-item js-event-location">
-                                <svg class="event__link-svg">
-                                  <use xlink:href="#icon-location"></use>
-                                </svg></a>
-                              <div class="event__link-item event__link-item2-share">
-                                <svg class="event__link-svg">
-                                  <use xlink:href="#icon-share"></use>
-                                </svg>
-                                <div class="social social2-share"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a><a href="#" class="social__item"><i class="fa fa-google-plus"></i></a><a href="#" class="social__item"><i class="fa fa-odnoklassniki"></i></a></div>
-                              </div><a class="event__link-item">
-                                <svg class="event__link-svg">
-                                  <use xlink:href="#icon-phone"></use>
-                                </svg></a><a class="event__link-item js-event-mail">
-                                <svg class="event__link-svg">
-                                  <use xlink:href="#icon-mail"></use>
-                                </svg></a>
-                            </div> -->
-                          </div>
+                      <div class="listing__item"> 
+                        <div class="event__item js-event-item" style="padding-left: 100px;">
+                          <!-- <div class="event__preview"><span class="event__status"></span><a href="{% url 'event_detail' item.id %}" class="event__preview-link"><img src="{% static 'media-demo/post/post-3.jpg' %}" alt="" class="event__preview-img"></a>
+                          </div> -->
                           <div class="event__details">
                             <h3 class="event__name"><a href="{% url 'event_detail' item.id %}">{{ item.name }}</a></h3>
                             <h5 class="event__organaizer">Organizer -<strong>{{ item.organizer }}</strong></h5>
                             <div class="event__info"><span class="event__time">
                                 <svg class="event__info-svg">
                                   <use xlink:href="#icon-time"></use>
-                                </svg>{{ item.duration }}</span>
+                                </svg>{{ item.begin_date }} to {{item.end_date}}</span>
                               <h6 class="event__location">
                                 <svg class="event__info-svg">
                                   <use xlink:href="#icon-location"></use>
@@ -35,7 +18,8 @@
                               </h6>
                             </div>
                             <div class="clearfix"></div>
-                            <!-- <div class="event__price">$89</div> --><a href="{% url 'event_detail' item.id %}" class="btn--link event__more">Read more</a>
+                            {% if not item.is_free  %}
+                            <div class="event__price">Price: ${{item.price}}</div>{% endif %}<a href="{% url 'event_detail' item.id %}" class="btn--link event__more">Read more</a>
                           </div>
                           <div class="clearfix"></div>
                           <div class="event__form js-form"></div>

@@ -4,10 +4,10 @@ from .models import *
 # Register your models here.
 
 
-class WelcomeAdmin(SummernoteModelAdmin):
-	list_display = ["__str__", "content"]
+class VerseAdmin(SummernoteModelAdmin):
+	list_display = ["__str__", "verse_text"]
 	class Meta:
-		model = Welcome
+		model = Verse
 
 
 class PastorAdmin(SummernoteModelAdmin):
@@ -20,12 +20,12 @@ class SubscribeAdmin(SummernoteModelAdmin):
 	class Meta:
 		model = Subscribe
 
-class ExtraAdmin(SummernoteModelAdmin):
+class WelcomeAdmin(SummernoteModelAdmin):
 	list_display = ["__str__"]
 	class Meta:
-		model = Extra
+		model = Welcome
 
-admin.site.register(Welcome, WelcomeAdmin)
+admin.site.register(Verse, VerseAdmin)
 admin.site.register(Pastor, PastorAdmin)
-admin.site.register(Extra, ExtraAdmin)
+admin.site.register(Welcome, WelcomeAdmin)
 admin.site.register(Subscribe, SubscribeAdmin)

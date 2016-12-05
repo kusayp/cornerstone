@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% load staticfiles %}
-{% block body %}<body class="">{% endblock %}
+{% block body %}<body class="bg-white_brick_wall">{% endblock %}
 {% block content %}
   <main class="main main--subpage main--events">
         <!-- BEGIN BREADCRUMBS-->
@@ -8,7 +8,7 @@
           <div class="container">
             <ul>
               <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
-              <li class="breadcrumbs__item"><a href="{% url 'event' %}" class="breadcrumbs__link">{{ title }}</a></li>
+              <li class="breadcrumbs__item">{{ title }}</li>
             </ul>
           </div>
         </nav>
@@ -29,96 +29,15 @@
                 <!-- BEGIN WIDGET CONTENT-->
                 <div class="widget__content">
                   <div data-modifier="list" data-view="event" class="event event--list js-switch-view js-event">
-                    <div class="listing listing--list">
-                    {% for item in events %}
-                      <div class="listing__item">
-                        <div class="event__item js-event-item">
-                          <div class="event__preview"><span class="event__status"></span><a href="{% url 'event_detail' item.id %}" class="event__preview-link"><img src="{% static 'media-demo/post/post-3.jpg' %}" alt="" class="event__preview-img"></a>
-                            <!-- <div class="event__links"><a class="event__link-item js-event-location">
-                                <svg class="event__link-svg">
-                                  <use xlink:href="#icon-location"></use>
-                                </svg></a>
-                              <div class="event__link-item event__link-item--share">
-                                <svg class="event__link-svg">
-                                  <use xlink:href="#icon-share"></use>
-                                </svg>
-                                <div class="social social--share"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a><a href="#" class="social__item"><i class="fa fa-google-plus"></i></a><a href="#" class="social__item"><i class="fa fa-odnoklassniki"></i></a></div>
-                              </div><a class="event__link-item">
-                                <svg class="event__link-svg">
-                                  <use xlink:href="#icon-phone"></use>
-                                </svg></a><a class="event__link-item js-event-mail">
-                                <svg class="event__link-svg">
-                                  <use xlink:href="#icon-mail"></use>
-                                </svg></a>
-                            </div> -->
-                          </div>
-                          <div class="event__details">
-                            <h3 class="event__name"><a href="{% url 'event_detail' item.id %}">{{ item.name }}</a></h3>
-                            <h5 class="event__organaizer">Organizer -<strong>{{ item.organizer }}</strong></h5>
-                            <div class="event__info"><span class="event__time">
-                                <svg class="event__info-svg">
-                                  <use xlink:href="#icon-time"></use>
-                                </svg>{{ item.begin_date }}</span>
-                              <h6 class="event__location">
-                                <svg class="event__info-svg">
-                                  <use xlink:href="#icon-location"></use>
-                                </svg>{{ item.location }}
-                              </h6>
-                            </div>
-                            <div class="clearfix"></div>
-                            <!-- <div class="event__price">$89</div> --><a href="{% url 'event_detail' item.id %}" class="btn--link event__more">Read more</a>
-                          </div>
-                          <div class="clearfix"></div>
-                          <div class="event__form js-form"></div>
-                          <div class="event__map js-map"></div>
-                        </div>
-                      </div>
-                      {% endfor %}
+                    <div class="listing listing--list" id="event-list">
+                    {% include "ajax.html" %}
                     </div>
                   </div>
                 </div>
                 <!-- END WIDGET CONTENT-->
               </div>
-              <!-- END WIDGET-->
-              <!-- BEGIN PAGINATION-->
-              <!-- <nav class="pagination"><a class="pagination__btn">
-                  <svg class="pagination__btn-svg">
-                    <use xlink:href="#icon-arrow-left"></use>
-                  </svg><span class="pagination__btn-span"> Previous event</span></a>
-                <ul class="pagination__pages">
-                  <li><a href="#">1</a></li>
-                  <li class="active"><span>2</span></li>
-                  <li><a href="#">3</a></li>
-                  <li><span>...</span></li>
-                  <li><a href="#">15</a></li>
-                </ul><a class="pagination__btn"><span class="pagination__btn-span">Next event</span>
-                  <svg class="pagination__btn-svg">
-                    <use xlink:href="#icon-arrow-right"></use>
-                  </svg></a>
-              </nav> -->
-              <!-- END PAGINATION-->
             </div>
-            <!-- END MAIN CONTENT-->
-            <!-- BEGIN SIDEBAR-->
             <aside class="sidebar">
-              <!-- BEGIN WIDGET-->
-              <div class="widget js-widget widget--sidebar">
-                <!-- BEGIN WIDGET HEADER-->
-                <div class="widget__header">
-                  <h3 class="widget__title js-widget-title">Event categories</h3>
-                </div>
-                <!-- END WIDGET HEADER-->
-                <!-- BEGIN WIDGET CONTENT-->
-                <div class="widget__content">
-                  <ul class="list">
-                  {% for item in categories %}
-                    <li class="list__item"><a href="{% url 'categories_detail' item.title %}" class="list__link">{{ item.title }}</a></li>
-                  {% endfor %}
-                  </ul>
-                </div>
-                <!-- END WIDGET CONTENT-->
-              </div>
-              <!-- END WIDGET-->
               <!-- BEGIN WIDGET-->
               <div class="widget js-widget widget--sidebar">
                 <!-- BEGIN WIDGET HEADER-->
@@ -150,3 +69,14 @@
       </main>
 }
 {% endblock %}
+{% block hymnjs %}<script type="text/javascript" src="{% static 'js/events.js' %}"></script>
+<script type="text/javascript">
+  console.log('test');
+  $(document).ready(function() {
+    console.log('test');
+    events.init();
+  });
+</script>
+
+{% endblock %}
+

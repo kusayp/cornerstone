@@ -10,7 +10,7 @@ var events= function(){
 		block_request = true;
 		page += 1;
 		$.get('?page=' + page, function(data) {
-			console.log(data)
+			// console.log(data)
 		if(data == '') {
 			empty_page = true;
 		}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="sidebar-hide bg-white_brick_wall">{% endblock %}
+{% block content %}
+<main class="main main--subpage main--about">
+        <!-- BEGIN BREADCRUMBS-->
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item">{{title}}</li>
+            </ul>
+          </div>
+        </nav>
+        <!-- END BREADCRUMBS-->
+        <!-- BEGIN MAIN HEAD-->
+        <header class="main__head">
+          <h1 class="main__title">{{title}}</h1>
+        </header>
+        <!-- END MAIN HEAD-->
+        <div class="container">
+          <div class="main__wrap">
+            <!-- BEGIN MAIN CONTENT-->
+            <div class="main__content">
+              <!-- BEGIN WIDGET-->
+              <div class="widget js-widget widget--card">
+                <!-- BEGIN WIDGET HEADER-->
+                <div class="widget__header">
+                  <h2 class="widget__title js-widget-title" style="text-align: center;">CBBC needs your information</h2>
+                </div>
+                <!-- END WIDGET HEADER-->
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                  <div class="auth--register">
+                    <!-- BEGIN AUTH REGISTER-->
+                    <form action="#" class="form form--auth form--register js-parsley">
+                      <h5 class="form__title">Please fill this form if you are a member of CBBC</h5>
+                      <div class="row">
+                        <div class="form-group">
+                          <label for="register-name-inline" class="control-label">First name</label>
+                          <input type="text" name="username" id="register-name-inline" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="register-lastname-inline" class="control-label">Last name</label>
+                          <input type="text" name="name" id="register-lastname-inline" required class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group">
+                          <label for="register-email-inline" class="control-label">E-mail</label>
+                          <input type="email" name="email" id="register-email-inline" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="register-password-inline" class="control-label">Phone</label>
+                          <input type="text" name="phone" id="register-password-inline" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="register-password-inline" class="control-label">Phone</label>
+                          <input type="text" name="phone" id="register-password-inline" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="register-password-inline" class="control-label">Phone</label>
+                          <input type="text" name="phone" id="register-password-inline" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="register-password-inline" class="control-label">Phone</label>
+                          <input type="text" name="phone" id="register-password-inline" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="register-password-inline" class="control-label">Phone</label>
+                          <input type="text" name="phone" id="register-password-inline" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="register-password-inline" class="control-label">Phone</label>
+                          <input type="text" name="phone" id="register-password-inline" required class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-4">
+                        <button type="submit" class="btn--flat form__submit">Sign up</button>
+                      </div>
+                        <div class="col-md-8">
+                          <blockquote>Please kindly send us an email <a href="">[admin@admin.com]</a> if you want to make any changes to the information you are providing us today in the future.</blockquote>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- end of block .form-register-->
+                    <!-- END FORM REGISTER-->
+                  </div>
+                </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              
+              <!-- END WIDGET-->
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- BEGIN SIDEBAR-->
+            <aside class="sidebar">
+            </aside>
+            <!-- END SIDEBAR-->
+          </div>
+        </div>
+      </main>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}<body class="sidebar-hide bg-white_brick_wall">{% endblock %}
+{% block content %}
+<main class="main main--subpage main--default">
+        <!-- BEGIN BREADCRUMBS-->
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ul>
+              <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
+              <li class="breadcrumbs__item">{{title}}</li>
+            </ul>
+          </div>
+        </nav>
+        <!-- END BREADCRUMBS-->
+        <!-- BEGIN MAIN HEAD-->
+        <header class="main__head">
+          <h1 class="main__title">{{title}}</h1>
+        </header>
+        <!-- END MAIN HEAD-->
+        <div class="container">
+          <div class="main__wrap">
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                <div class="widget js-widget widget--card widget--details">
+                <!-- BEGIN WIDGET HEADER-->
+                <div class="widget__header">
+                  <h2 class="widget__title js-widget-title">{{title}}.</h2>
+                </div>
+                <!-- END WIDGET HEADER-->
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                  <section class="member member--list">
+                    <div class="member__intro">
+                      <p>Use your talents and skills to help build the kingdom of God. Find peace and joy as you embrace and excel in your work at the Church. Our employees have a unique commitment and devotion to the work.</p>
+                    </div>
+                    <h3>Church Ministry Leaders</h3>
+                    <div class="member__list">
+                    {% for item in leaders %}
+                      <div class="member__item">
+                        <figure class="member__preview"><img src="/static/media-demo/{{item.img_url}}.jpg" alt="" class="member__img">
+                          <figcaption class="member__caption"><span class="member__name">{{item.name}}</span><span class="member__post">{{item.role}}</span><a href="{% url 'pastor' item.id %}" class="btn--border-white member__more">More info</a></figcaption>
+                        </figure>
+                      </div>
+                    {% endfor %}
+                    </div>
+                  </section>
+                </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              
+                </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              <!-- END WIDGET-->
+            </div>
+      </main>
+    {% endblock %}

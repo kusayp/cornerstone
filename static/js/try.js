@@ -1,15 +1,14 @@
-var hymn= function(){
+var wwb= function(){
 	var request_context=$('#request_context');
 	var hymns=$('#wwb_list');
 	var api_token = $('#api_token');
 	var numberPerPage=10;
-	var ajaxCall=function(){
+	var ajaxCall=function(){ 
 		$.ajax({
 			url:request_context.val()+'/api/v1.0/wwb/',
 			method: 'get',
 			headers: {'Authorization': 'Token '+ api_token.val()}
 		}).done(function(data){
-			console.log('return',data);
 			populateHymns(data);
 
 			var numberOfPages=Math.ceil(data.count/numberPerPage)

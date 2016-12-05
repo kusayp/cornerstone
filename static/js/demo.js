@@ -41,8 +41,6 @@
    ==============================================================*/
   (function () {
     app.plyr.setup();
-    app.initMap('.js-map-canvas', window.demodata.contacts);
-    app.initMap('.js-map-contact', window.demodata.contacts);
     initGalleryWide();
     initGallery('.js-gallery-item');
     initRangeSlider('#range_price');

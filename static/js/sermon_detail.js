@@ -1,20 +1,18 @@
 var comments= function(){
     var request_context=$('#request_context');
+    var api_token = $('#api_token');
     var comments = $('#comments');
     var current_event = $('#sermon'); 
     var comments_comments = $('#comments_comments');
-    // var data=$(this).serialize();
 
     var ajaxCall=function(){
         $.ajax({ 
         url: request_context.val()+'/api/v1.0/sermon/',
         method: 'get',
-        headers:{'Authorization':'Token 165570b723684e05a99b2a9f36639c380e0e9afc'}
+        headers:{'Authorization':'Token '+api_token.val()}
         }).done(function(data1){
             if (data1){
                 for (var i = 0; i < data1.results.length; i++) {
-                    // comments_comments.append($(document.createElement('h6')).addClass('comment__header-comment')
-                    //     .append($(document.createElement('i')).addClass('fa fa-comment')).html(data1.results[i].comments))
                     a = data1.results[i].id;
                     if (a == parseInt(current_event.val())) {
                         comments.html('');
@@ -48,11 +46,9 @@ var comments= function(){
         $.ajax({
             url:request_context.val()+'/api/v1.0/comment/',
             method: 'post',
-            headers: {'Authorization': 'Token 165570b723684e05a99b2a9f36639c380e0e9afc'},
+            headers: {'Authorization': 'Token '+api_token.val()},
             data:data
         }).done(function(data){
-            $('#sermon_detail').reset();
-            console.log(data);
         }).fail(function(err){
             console.log(err);
         })          

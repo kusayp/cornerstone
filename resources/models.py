@@ -21,9 +21,12 @@ class Sermon(models.Model):
     """
      Model for Sermon
     """
-    date_posted = models.DateTimeField(auto_now_add=True)
-    date = models.DateTimeField(auto_now_add=False)
+    date_posted = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now_add=False)
     title= models.CharField(max_length=500)
+    verse = models.CharField(max_length=100)
+    text_verse = models.CharField(max_length=100)
+    verse_text = models.TextField()
     content =  models.TextField()
     author = models.CharField(max_length=100)
     categorys = models.ForeignKey(Tag, related_name='sermons')
@@ -53,10 +56,11 @@ class Devotion(models.Model):
     """
      Model for Devotion
     """
-    date_posted = models.DateTimeField(auto_now_add=True)
+    date_posted = models.DateField(auto_now_add=True)
     principle = models.CharField(max_length=1000)
     title= models.CharField(max_length=500)
     content =  models.TextField()
     
     def __str__(self):
         return self.title
+ 

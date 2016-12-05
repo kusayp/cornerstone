@@ -3,10 +3,10 @@ var hymn= function(){
 	var request_context=$('#request_context');
 	var hymns=$('#hymns');
 	var api_token = $('#api_token');
-	var numberPerPage=10;
+	var numberPerPage=15;
 	var ajaxCall=function(){
 		$.ajax({
-			url:request_context.val()+'/api/v1.0/hymns/',
+			url:request_context.val()+'/api/v1.0/hymns/', 
 			method: 'get',
 			headers: {'Authorization': 'Token '+ api_token.val()}
 		}).done(function(data){

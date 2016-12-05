@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import get_object_or_404, render
 from .models import *
+from home.models import Pastor
 from django.conf import settings
 
 # Create your views here.
@@ -39,9 +40,11 @@ def wwb(request):
 
 def message(request):
 	messages = Message.objects.order_by('-id')[:1]
+	questions = Question.objects.order_by('-id')
 	context = {
 		'messages' : messages,
-		'title': 'Salvation Message',
+		'questions': questions,
+		'title': 'Welcome Message',
 	}
 	return render(request, 'message.html', context)
 
@@ -53,3 +56,19 @@ def about(request, slug):
 		'title' : 'About Us',
 	}
 	return render(request, 'about.html', context)
+
+def leaders(request):
+	leaders = Pastor.objects.order_by('id')[3:]
+
+	context = {
+		'leaders' : leaders,
+		'title': 'Our Ministry Leaders',
+	}
+	return render(request, 'leaders.html', context)
+
+def registration(request):
+
+	context = {
+		'title': 'Registration Page',
+	}
+	return render(request, 'registration.html', context)

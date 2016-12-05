@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from resources.serializers import *
 from resources.models import *
 from aboutus.models import *
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route
 from rest_framework.status import (HTTP_201_CREATED,
@@ -77,12 +78,17 @@ class DevotionViewSet(viewsets.ModelViewSet):
     serializer_class = DevotionSerializer
     queryset = Devotion.objects.all()
 
+class PaginationWwb(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100 
+
 class WwbViewSet(viewsets.ModelViewSet):
 
     """
     Returns a paginated list of all hymn categories
     """
-
+    pagination_class = PaginationWwb
     serializer_class = WwbSerializer
     queryset = WWB.objects.all()
 
@@ -95,7 +101,7 @@ class WwbViewSet(viewsets.ModelViewSet):
         name , content
 
         """
-        wwbs = request.data.get('results')
+        wwbs = request.data.get('results') 
         for item in wwbs:
             title = item['title']
             content = item['content']

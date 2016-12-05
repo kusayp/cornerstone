@@ -20,7 +20,7 @@ class SermonCategoryAdmin(SummernoteModelAdmin):
 		model = Tag
 
 class DevotionAdmin(SummernoteModelAdmin):
-	list_display = ["__str__"]
+	list_display = ["__str__", "date_posted"]
 	class Meta:
 		model = Devotion
 

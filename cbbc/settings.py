@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@b@g=k2!$*lqi+5%3qhl-^w_c5@4hut8r()gqjfg&52m*c9m4-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -87,11 +87,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
 
-    'PAGINATE_BY': 10,
+    'PAGINATE_BY': 15,
 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
 
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 15,
 
 }
 
@@ -132,9 +132,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cbbc.wsgi.application'
 
-API_KEY = '165570b723684e05a99b2a9f36639c380e0e9afc'
+API_KEY = '5dbb0af0bc242a80db5f2a7e9ca2aed7f1b80821'
 
-# Database
+# Database  f32edbd93b669e943fadf6ec9353f1680cf70cff    
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 DATABASES={}
 if 'DATABASE_URL' in os.environ:

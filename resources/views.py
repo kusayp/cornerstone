@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
@@ -9,6 +10,7 @@ from events.models import Word
 # Create your views here.
 def sermon(request):
 	sermons = Sermon.objects.order_by('-id')
+	word = Word.objects.order_by('-id')
 	categorys = Tag.objects.order_by('name')
 	paginator = Paginator(sermons, 2)
 	page = request.GET.get('page')
@@ -23,6 +25,7 @@ def sermon(request):
 		'categorys' : categorys,
 		'title': 'Sermons',
 		'api_token': settings.API_KEY, 
+		'word':word,
 	}
 	return render(request, 'sermon/sermon.html', context)
 
@@ -44,7 +47,8 @@ def sermon_detail(request, sermon_id):
 		'sermons' : sermon,
 		'form': form,
 		'comments' : comments,
-		'title': 'Sermon Detail',
+		'api_token': settings.API_KEY,
+		'title': 'Sermons',
 	}
 	return render(request, 'sermon/sermon_detail.html', context)
 
@@ -72,8 +76,51 @@ def category_detail(request, name):
 
 def devotion(request):
 	devotions = Devotion.objects.order_by('-id')[:1]
+	pre = Devotion.objects.order_by('-id')[1:6]
+	# devot = Devotion.objects.order_by('-id')
+
+	# if request.is_ajax():
+	# 	context = {
+	# 	# 'devotions': devotions,
+	# 	'devot': devot,
+	# 	'pre':pre,
+	# 	'title': 'Devotions',
+	# 	}
+	# 	return render(request, 'devotion/devotion_ajax.html', context)
 	context = {
 		'devotions' : devotions,
+		# 'devot': devot,
 		'title': 'Devotions',
+		'pre' : pre,
+		'api_token': settings.API_KEY,
 	}
 	return render(request, 'devotion/devotion.html', context)
+
+# def devot(request):
+# 	# if request.method == 'GET':
+# 	# 	d_id = request.GET.get('id')
+# 	# 	if d_id:
+# 	devot = Devotion.objects.all()
+
+# 	response_data = {}
+# 	try:
+# 		response_data['results'] = 'ok'
+# 		response_data['message'] = list(devot)
+# 	except:
+# 		response_data['results'] = 'error'
+# 		response_data['message'] = 'cant load'
+# 	return HttpResponse(json.dumps(response_data), content_type="application/json")
+# 		# devot_id = request.data.get('id')
+# 		# if devot_id:
+# 		# 	devot = Devotion.objects.get(id=int(devot_id))
+# 		# 	return JsonResponse({'status': devot})
+# 		# else:
+# 		# 	return JsonResponse({'status': 'ko'})
+
+
+	
+	
+		
+		
+	
+# 		

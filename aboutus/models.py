@@ -4,7 +4,7 @@ from django.db import models
 
 class WWB(models.Model):
 	"""
-	model for what we believe
+	model for what we believe 
 
 	"""
 	title = models.CharField(max_length=100)
@@ -21,11 +21,21 @@ class Message(models.Model):
 	"""
 	title = models.CharField(max_length=100)
 	content = models.TextField()
-	notes = models.CharField(max_length=500)
-	date = models.DateTimeField(auto_now_add=True)
+	expectation = models.CharField(max_length=500)
+	involved = models.CharField(max_length=500)
 
 	def __str__(self):
 		return self.title
+
+class Question(models.Model):
+	question = models.CharField(max_length=100)
+	anwser = models.CharField(max_length=500)
+
+	class Meta:
+		verbose_name_plural = 'Common Questions People Ask'
+
+	def __str__(self):
+		return self.question
 
 class About(models.Model):
 	name = models.CharField(max_length=100)

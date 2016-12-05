@@ -8,23 +8,23 @@
           <div class="widget__content">
           {% for item in events %}
             <!-- BEGIN nextevent countcircles-->
-            <section class="nextevent nextevent--countcircles">
+            <section class="nextevent nextevent--countpanel">
               <!-- BEGIN countdown circles-->
-              <div data-end-date="{{ item.begin_date | date:'Y/m/d' }}" class="countdown countdown--circles js-countcircles">
+              <div data-end-date="{{ item.begin_date | date:'Y/m/d' }}" class="countdown countdown--panel js-counttimer">
                 <input type="text" value="" class="countdown-days">
                 <input type="text" value="" class="countdown-hours">
                 <input type="text" value="" class="countdown-minutes">
                 <input type="text" value="" class="countdown-seconds"><span class="countdown__sep"></span><span class="countdown__label">Days</span><span class="countdown__label">Hours</span><span class="countdown__label">Minutes</span><span class="countdown__label">Seconds</span>
               </div>
               <!-- END countdown circles-->
-              <div class="nextevent__details">
-              
+              <div class="nextevent__item">
+              <div class="nextevent__details" style="width: 100%;text-align: center;">
                 <h3 class="nextevent__name"><!-- <a href="event_details.html"> -->{{item.name | safe}}<!-- </a> --></h3>
-                <time datetime="2015" class="nextevent__date">{{item.begin_date | date:'Y/m/d' }}</time> 
+                <time datetime="2015" class="nextevent__date"><svg class="event__time-svg"><use xlink:href="#icon-time"></use></svg>{{item.begin_date | date:'Y/m/d' }}</time> 
                 <a href="{% url 'event_detail' item.id %}" class="btn--border-brand nextevent__more">More Details</a>
-                
               </div>
-            </section>
+              </div>
+           </section>
             <!-- END nextevent countcircles-->
             {% endfor %}
           </div>

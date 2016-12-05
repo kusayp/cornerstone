@@ -13,6 +13,11 @@ class MessageAdmin(SummernoteModelAdmin):
 	class Meta:
 		model = Message
 
+class QuestionAdmin(SummernoteModelAdmin):
+	list_display = ["__str__"]
+	class Meta:
+		model = Question
+
 class AboutAdmin(SummernoteModelAdmin):
 	list_display = ["__str__"]
 	class Meta:
@@ -20,4 +25,5 @@ class AboutAdmin(SummernoteModelAdmin):
 
 admin.site.register(WWB, WWBAdmin)
 admin.site.register(Message, MessageAdmin)
+admin.site.register(Question, QuestionAdmin)
 admin.site.register(About, AboutAdmin)

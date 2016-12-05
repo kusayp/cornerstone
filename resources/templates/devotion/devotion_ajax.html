@@ -1,0 +1,27 @@
+{% for item in devotions %}
+            <div class="main__content">
+              <!-- BEGIN WIDGET-->
+              <div class="widget js-widget widget--card">
+                <!-- BEGIN WIDGET HEADER-->
+                <div class="widget__header">
+                  <h2 class="widget__title js-widget-title">{{ item.title | safe }}</h2>
+                </div>
+                <!-- END WIDGET HEADER-->
+                <!-- BEGIN WIDGET CONTENT-->
+                <div class="widget__content">
+                  <div class="post post--details">
+                    <div class="post__description">
+                      <p>{{ item.content | safe }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    {{item.principle}}
+                  </div>
+                </div>
+                <!-- END WIDGET CONTENT-->
+              </div>
+              <!-- END WIDGET-->
+            </div>
+            {% endfor %}

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block body %}<body class="sidebar-hide bg-white_brick_wall">{% endblock %}
 {% block content %}
 <main class="main main--subpage main--sermons">
         <nav class="breadcrumbs">
@@ -8,6 +8,7 @@
             <ul>
               <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
               <li class="breadcrumbs__item"><a href="{% url 'sermon' %}" class="breadcrumbs__link">{{title}}</a></li>
+              <li class="breadcrumbs__item">Sermon Detail</li>
             </ul>
           </div>
         </nav>
@@ -20,62 +21,21 @@
               <div class="widget js-widget widget--card widget--details">
                 <div class="widget__content">
                   <div class="sermon sermon--details">
-                    <div class="widget__header">
-                      <time datetime="2016" class="sermon__time">{{ sermons.date }}</time>
+                    <div class="widget__header" style="text-align: center;">
+                      <time datetime="2016" class="sermon__time"><svg class="event__time-svg"><use xlink:href="#icon-time"></use></svg>{{ sermons.date }}</time>
                     </div>
-                    <div class="widget__header-title">
+                    <div class="widget__header-title" style="text-align: center;">
                       <h2 class="widget__title">{{ sermons.title | safe }}</h2>
                     </div>
-                    <div class="sermon__speakers">Speakers - <a>{{ sermons.author | safe }}</a></div>
-                    <div class="widget__preview">
-                      <div class="tab tab--media js-tab">
-                        <ul role="tablist" class="tab__nav">
-                          <li role="presentation" class="tab__item active"><a href="#media-video" aria-controls="media-video" role="tab" data-toggle="tab" class="tab__link">
-                              <svg class="tab__svg">
-                                <use xlink:href="#icon-video"></use>
-                              </svg><span class="tab__title">Watch Sermon Video</span></a></li>
-                          <li role="presentation" class="tab__item"><a href="#media-audio" aria-controls="media-audio" role="tab" data-toggle="tab" class="tab__link">
-                              <svg class="tab__svg">
-                                <use xlink:href="#icon-audio"></use>
-                              </svg><span class="tab__title">Listen Sermon Audio</span></a></li>
-                          <li class="tab__item"><a href="{% static 'media/Inspirational Hymns - Come thou fount of evert blessing.mp3' %}" target="_blank" class="tab__link">
-                              <svg class="tab__svg">
-                                <use xlink:href="#icon-speaker"></use>
-                              </svg><span class="tab__title">Download Sermon Audio</span></a></li>
-                          <li class="tab__item"><a href="http://codefactory47.com/public/webelieve/media/notes.pdf" target="_blank" class="tab__link">
-                              <svg class="tab__svg">
-                                <use xlink:href="#icon-file"></use>
-                              </svg><span class="tab__title">Download Sermon PDF</span></a></li>
-                          <li class="tab__item tab__item--social"><a class="tab__youtube">Watch on YouTube</a><a class="tab__vimeo">Watch on Vimeo</a><a class="tab__soundcloud">Listen on SoundCloud</a></li>
-                          <li>
-                            <button class="tab__expander js-tab-expander"></button>
-                          </li>
-                        </ul>
-                        <div class="tab-content">
-                          <!-- <div id="media-video" role="tabpanel" class="tab-pane active">
-                            <div class="plyr">
-                              <video poster="http://codefactory47.com/public/webelieve/media/catoliccover.jpg" controls="">
-                                <source src="http://codefactory47.com/public/webelieve/media/video-1.mp4" type="video/mp4">
-                                <source src="http://codefactory47.com/public/webelieve/media/video-1.webm" type="video/webm">
-                              </video>
-                            </div>
-                          </div> -->
-                          <div id="media-audio" role="tabpanel" class="tab-pane">
-                            <div class="plyr">
-                              <audio controls crossorigin>
-                                <source src="{% static 'media/Inspirational Hymns - Come thou fount of evert blessing.mp3' %}" type="audio/mp3">
-                              </audio>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="sermon__speakers" style="text-align: center;"><svg class="event__time-svg"><use xlink:href="#icon-user"></use></svg>Speaker - <a>Pastor {{ sermons.author | safe }}</a></div>
+                    <div class="sermon__speakers" style="text-align: center;"><svg class="event__time-svg"><use xlink:href="#icon-doc"></use></svg>Theme Verse - {{ sermons.verse | safe }}</div>
+                    <blockquote class="sermon__speakers" style="text-align: center;text-align:justify;">{{ sermons.verse_text | safe }}</blockquote> 
                     </div>
-                    <div class="widget__description">
+                    <div class="widget__description" style="padding-left: 50px;text-align: justify;">
                       <p>{{ sermons.content | safe }}</p>
                     </div>
                   </div>
                 </div>
-              </div>
               <div class="widget js-widget widget--card">
                 <div class="widget__content">
                   <div class="comment comment--list">
@@ -97,6 +57,7 @@
                 </div>
                 <div class="widget__content">
                   <div class="comment__form">
+                  <input type="hidden" value="{{ api_token }}" id="api_token"/>
                   <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
                     <form method="POST" action="#" id="sermon_detail" class="form js-parsley form--comment" role="form">{% csrf_token %}
                       <div class="row">

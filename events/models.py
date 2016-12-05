@@ -1,18 +1,6 @@
 from django.db import models
 # Create your models here.
 
-class Category(models.Model):
-
-    """
-     Model for SermonCategory
-
-    """
-    title  = models.CharField(max_length=200)
-    
-
-    def __str__(self):
-        return self.title
-
 class Event(models.Model):
 	"""
 	model for welcome
@@ -27,7 +15,8 @@ class Event(models.Model):
 	date_posted = models.DateTimeField(auto_now_add=True)
 	mobile = models.CharField(max_length=20)
 	email = models.CharField(max_length=100)
-	category = models.ForeignKey(Category, related_name='categorys')
+	is_free  = models.BooleanField(default=True)
+	price = models.CharField(max_length=3, blank=True, null=True, default='')
 	
 	def __str__(self):
 		return self.name

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block body %}<body class="sidebar-hide bg-white_brick_wall">{% endblock %}
 {% block content %}
 <main class="main main--subpage main--default">
         <!-- BEGIN BREADCRUMBS-->
@@ -8,7 +8,7 @@
           <div class="container">
             <ul>
               <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
-              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">{{title}}</a></li>
+              <li class="breadcrumbs__item">{{title}}</li>
             </ul>
           </div>
         </nav>
@@ -21,28 +21,51 @@
         <div class="container">
           <div class="main__wrap">
             <!-- BEGIN MAIN CONTENT-->
-            {% for item in messages %}
             <div class="main__content">
               <!-- BEGIN WIDGET-->
               <div class="widget js-widget widget--card">
                 <!-- BEGIN WIDGET HEADER-->
                 <div class="widget__header">
-                  <h2 class="widget__title js-widget-title">{{item.title | safe }}</h2>
+                  <h2 class="widget__title js-widget-title">{{title}}.</h2>
                 </div>
                 <!-- END WIDGET HEADER-->
                 <!-- BEGIN WIDGET CONTENT-->
                 <div class="widget__content">
+                {% for item in messages %}
                   <div class="post post--details">
                     <div class="post__description"><img src="{% static 'media-demo/post/post-3.jpg' %}" style="float: right; margin: 10px 0 10px 20px;" alt="">
-                      <p>{{item.content | safe }}</p>
+                      {{item.content | safe }}
+                      <h3>What to expect.</h3>
+                      <p>{{item.expectation}}</p>
+                      <h3>Common Questions.</h3>
+                      <!-- BEGIN FAQ-->
+                      <div role="tablist" aria-multiselectable="true" class="faq">
+                      {% for item in questions %}
+                        <dl class="faq__item">
+                          <dt id="heading-0" role="tab" class="faq__title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-0" aria-expanded="true" aria-controls="collapse-0" class="faq__expander collapsed">{{item.question}}</a></dt>
+                          <dd id="collapse-0" role="tabpanel" aria-labelledby="heading-0" class="faq__content collapse">
+                            <div class="faq__body">
+                              <p>{{item.anwser}}</p>
+                            </div>
+                            <div class="faq__footer"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-0" aria-controls="collapse-0" class="faq__close">Close</a></div>
+                          </dd>
+                        </dl>
+                        {% endfor %}
+                      </div>
+                      <!-- END FAQ-->
+                      <h3>Get Involved in our Church.</h3>
+                      <div class="main__columns">
+                        <p>{{item.involved}}</p>
+                      </div>
+                    </div>
                   </div>
+                  {% endfor %}
                 </div>
-              </div>
                 <!-- END WIDGET CONTENT-->
               </div>
               <!-- END WIDGET-->
             </div>
-            {% endfor %}
+            
             <!-- END MAIN CONTENT-->
           </div>
         </div>

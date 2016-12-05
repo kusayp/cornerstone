@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block body %}<body class="scroll-animation">{% endblock %}
+{% block body %}<body class="scroll-animation bg-white_brick_wall">{% endblock %}
 {% block content %}  
 <main class="main">
         <div class="widget js-widget">  
@@ -10,7 +10,7 @@
                 <div class="slider__item">
                   <div class="slider__preview slider__preview--v1"><img src="{% static 'media-demo/banner/1920x940/banner-1.jpg' %}" alt="" class="slider__preview-img"/>
                   </div>
-                  {% for item in extras %}
+                  {% for item in welcome %}
                   <div class="slider__caption slider__caption--v2">
                     <div class="slider__title slider__title--v2">{{item.title}}</div>
                     <div class="slider__subtitle slider__subtitle--v2">{{item.content | safe }}</div>
@@ -26,6 +26,7 @@
                   {% for item in events %}
                     <div class="slider__heading slider__heading--v1">Next Event</div>
                     <h1 class="slider__title slider__title--v1">{{item.name | safe}}</h1>
+                    <div style="color: #fff;font-size: 30px;">Organized by</div>
                     <h4 class="slider__subtitle slider__subtitle--v1">{{item.organizer | safe}}.</h4>
                     <div class="slider__footer"><a href="{% url 'event_detail' item.id %}" class="btn--flat slider__more slider__more--v1">Read more</a>
                     </div>
@@ -36,7 +37,7 @@
                   <div class="slider__preview slider__preview--v6"><img src="{% static 'media-demo/banner/1920x940/banner-1.jpg' %}" alt="" class="slider__preview-img"/>
                   </div>
                   <div class="slider__caption slider__caption--v6">
-                    {% for item in titles %}
+                    {% for item in verse %}
                     <div class="slider__heading slider__heading--v6">{{item.verse | safe}}</div>
                     <div class="slider__title slider__title--v6">{{item.verse_text | safe}}</div>
                     {% endfor %}
@@ -61,50 +62,26 @@
               <div class="listing listing--list listing--event">
               {% for item in pastors %} 
                 <div class="listing__item">
-                  <div data-location="" data-phone="" data-email="" data-title="Don’t miss out on Gateway’s new series, Jesus, as Pastor Robert and..." class="event__item js-event-item">
-                    <div class="event__info"><a href="event_details.html" class="event__preview"><img src="{% static 'media-demo/default.jpg' %}" alt="" class="event__preview-img"></a>
+                  <div class="event__item js-event-item">
+                    <div class="event__info"><a class="event__preview"><img src="/static/media-demo/{{item.img_url}}.jpg" alt="" class="event__preview-img"></a>
                       <div class="event__details">
                         <h3 class="event__name"><a href="event_details.html">{{item.name | safe}}</a></h3>
                         <time datetime="2016" class="event__time">
                           <svg class="event__time-svg">
-                            <use xlink:href="#icon-time"></use>
+                            <use xlink:href="#icon-phone"></use>
                           </svg>{{item.phone | safe}}
                         </time>
                         <time datetime="2016" class="event__time">
                           <svg class="event__time-svg">
-                            <use xlink:href="#icon-time"></use>
+                            <use xlink:href="#icon-mail"></use>
                           </svg>{{item.email | safe}}
                         </time>
                       </div>
                     </div>
                     <div class="event__actions">
                       <a href="{% url 'pastor' item.id %}" class="btn--border-brand event__register">Read More</a>
-                    </div> 
-                    <div class="clearfix"></div>
-                    <div class="event__form js-form"></div>
-                    <div class="event__map js-map"></div>
+                    </div>
                   </div>
-<!-- <div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="{% static 'media-demo/default.jpg' %}" alt="...">
-      <div class="caption">
-        <h3>{{item.name | safe}}</h3>
-        <time datetime="2016" class="event__time">
-          <svg class="event__time-svg">
-            <use xlink:href="#icon-time"></use>
-          </svg>{{item.phone | safe}}
-        </time>
-        <time datetime="2016" class="event__time">
-          <svg class="event__time-svg">
-            <use xlink:href="#icon-time"></use>
-          </svg>{{item.email | safe}}
-        </time>
-        <p><a href="{% url 'pastor' item.id %}" class="btn btn-primary" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-</div> -->
                 </div>
                 {% endfor %}
               </div>
@@ -120,7 +97,7 @@
               <form action="#" method="POST" role="form" class="form form--subscribe js-form-subscribe" id="subscribe">{% csrf_token %} 
                 <div class="form-group">
                   <label class="control-label"></label>
-                  <input type="email" required class="form-control" id="email" placeholder="Your Email">
+                  <input type="email" onfocus="this.value=''" required class="form-control" id="email" placeholder="Your Email">
                 </div>
                 <button type="submit" class="form__submit">Send</button>
               </form>

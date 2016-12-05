@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block body %}<body class="sidebar-hide">{% endblock %} 
+{% block body %}<body class="sidebar-hide bg-white_brick_wall">{% endblock %} 
 {% block content %}
 <main class="main main--subpage main--default">
         <nav class="breadcrumbs">
           <div class="container">
             <ul>
               <li class="breadcrumbs__item"><a href="{% url 'home' %}" class="breadcrumbs__link">Home</a></li>
-              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">{{title}}</a></li>
+              <li class="breadcrumbs__item">{{title}}</li>
             </ul>
           </div>
         </nav>
@@ -31,7 +31,7 @@
             </aside>
             <div class="main__content">
               <div class="widget js-widget widget--card" style="padding-top: 20px ; padding-bottom: 20px">
-              <div class="accordion col-md-8 col-md-offset-2 center" id="hymns">
+              <div class="accordion col-md-8 col-md-offset-2 center  scrollable" id="hymns">
                   </div>
                   <div class="row">
                     <div class="col-md-12 center"  id="hymn_pagination"></div>

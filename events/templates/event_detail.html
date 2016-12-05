@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% load staticfiles %}
-{% block body %}<body class="sidebar-hide">{% endblock %}
+{% block body %}<body class="sidebar-hide bg-white_brick_wall">{% endblock %}
 {% block content %}
 <main class="main main--subpage main--events">
         <!-- BEGIN BREADCRUMBS-->
@@ -21,7 +21,7 @@
         <div class="container">
           <div class="main__wrap"> 
             <!-- BEGIN MAIN CONTENT-->
-            <div class="main__content">
+            <div class="main__content"> 
               <!-- BEGIN WIDGET-->
               <div class="widget js-widget widget--card widget--details">
                 <!-- END WIDGET HEADER-->
@@ -30,15 +30,15 @@
                   <div class="event event--details">
                     <nav class="widget__categories"></nav>
                     <div class="widget__header">
-                      <div class="widget__header-title">
+                      <div class="widget__header-title" style="text-align: center;">
                         <h2 class="widget__title">{{events.name|safe }}</h2>
                         <h5 class="event__organaizer">Organizer -<strong>{{events.organizer|safe }}</strong></h5>
                       </div>
-                      <!-- <div class="widget__header-column">
-                        <h6 class="event__price">Ticket price $100</h6><a class="btn2-flat event__book">Book ticket</a>
-                      </div> -->
+                      <div class="widget__header-column">
+                        {% if not events.is_free %}<h6 class="event__price">Participation price ${{events.price}}</h6>{% endif %}<!-- <a class="btn2-flat event__book">Book ticket</a> -->
+                      </div>
                     </div>
-                    <div class="widget__preview"><span class="event__status"></span><img src="{% static 'media-demo/events/event-details.jpg' %}" alt="" class="widget__preview-img">
+                    <div class="widget__preview"><!-- <span class="event__status"></span><img src="{% static 'media-demo/events/event-details.jpg' %}" alt="" class="widget__preview-img"> -->
                       <div class="collapser js-collapser collapser--event-details">
                         <div class="collapser__header">
                           <h4 class="collapser__title js-collapser-title">Event details</h4>
@@ -47,7 +47,7 @@
                           <div class="event__info"><span class="event__time">
                               <svg class="event__info-svg">
                                 <use xlink:href="#icon-time"></use>
-                              </svg>{{events.duration}}</span>
+                              </svg>{{events.begin_date}} and ends {{events.end_date}}</span>
                             <address class="event__location">
                               <svg class="event__info-svg">
                                 <use xlink:href="#icon-location"></use>
@@ -64,7 +64,7 @@
                           </div>
                           <!-- <div class="event__social">
                             <div class="social social2-white">
-                              <div class="social__list"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a><a href="#" class="social__item"><i class="fa fa-google-plus"></i></a></div>
+                              <div class="social__list"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a></div>
                             </div>
                           </div> -->
                         </div>
@@ -73,16 +73,6 @@
                     <div class="widget__description">
                       {{events.details | safe }}
                     </div>
-                    <!-- <div class="widget__map">
-                      <div class="map map--event">
-                        <div class="map__buttons">
-                          <button type="button" class="map__change-map js-map-btn active">Directional Map</button>
-                        </div>
-                        <div class="map__wrap">
-                          <div class="map__view js-map-canvas"></div>
-                        </div>
-                      </div>
-                    </div> -->
                     <h5 class="event__mess">Register on the event right now!</h5><a href="#" class="btn--flat event__register js-event-register-btn">Register</a> 
                     <div class="event__form js-event-register-form">
                      <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
@@ -91,15 +81,12 @@
                       <!-- {% csrf_token %} -->
                         <div class="row">
                           <div class="form-group form-group--lg-4">
-                           <!-- <input type="text" id="name" name="name"  /> -->
                             {{form.name}}
                           </div>
                           <div class="form-group form-group--lg-4">
-                                                     <!-- <input type="text" id="email" name="email"  /> -->
                             {{form.email}}
                           </div>
                           <div class="form-group form-group--lg-4">
-                                                     <!-- <input type="text" id="phone" name="phone"  /> -->
                             {{form.phone}} 
                           </div>
                           <input type="hidden" id="event" name="event" value="{{ events.id }}" />
@@ -109,49 +96,14 @@
                         </div>
                       </form>
                       <!-- END FORM-->
-                      <!-- end of block .comment__form-->
                     </div>
                   </div>
                 </div>
                 <!-- END WIDGET CONTENT-->
               </div>
-              <!-- END WIDGET-->
-              <!-- BEGIN PAGINATION-->
-              <!-- <nav class="pagination"><a class="pagination__btn">
-                  <svg class="pagination__btn-svg">
-                    <use xlink:href="#icon-arrow-left"></use>
-                  </svg><span class="pagination__btn-span"> Previous Event</span></a><a class="pagination__btn"><span class="pagination__btn-span">Next Event</span>
-                  <svg class="pagination__btn-svg">
-                    <use xlink:href="#icon-arrow-right"></use>
-                  </svg></a>
-              </nav> -->
-              <!-- END PAGINATION-->
-              <!-- BEGIN WIDGET-->
-              
-              <!-- END WIDGET-->
             </div>
             <!-- END MAIN CONTENT-->
-            <!-- BEGIN SIDEBAR-->
             <aside class="sidebar">
-              <!-- BEGIN WIDGET-->
-              <div class="widget js-widget widget--sidebar">
-                <!-- BEGIN WIDGET HEADER-->
-                <div class="widget__header">
-                  <h3 class="widget__title js-widget-title">Event categories</h3>
-                </div>
-                <!-- END WIDGET HEADER-->
-                <!-- BEGIN WIDGET CONTENT-->
-                <div class="widget__content">
-                  <ul class="list">
-                  {% for item in categories %}
-                    <li class="list__item"><a href="{% url 'categories_detail' item.title %}" class="list__link">{{ item.title }}</a></li>
-                  {% endfor %}
-                  </ul>
-                </div>
-                <!-- END WIDGET CONTENT-->
-              </div>
-              <!-- END WIDGET-->
-              <!-- BEGIN WIDGET-->
               <div class="widget js-widget widget--sidebar">
                 <!-- BEGIN WIDGET HEADER-->
                 <div class="widget__header">

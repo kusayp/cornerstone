@@ -77,3 +77,6 @@ class Donation(models.Model):
 
 	def __str__(self):
 		return self.firstname
+
+# class Leader(models.Model):
+# 	name:

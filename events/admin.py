@@ -8,10 +8,10 @@ class EventAdmin(SummernoteModelAdmin):
 	class Meta:
 		model = Event
 
-class EventCategoryAdmin(SummernoteModelAdmin):
-	list_display = ["__str__"]
-	class Meta:
-		model = Category
+# class EventCategoryAdmin(SummernoteModelAdmin):
+# 	list_display = ["__str__"]
+# 	class Meta:
+# 		model = Category
 
 class EventRegisterAdmin(SummernoteModelAdmin):
 	list_display = ["__str__"]
@@ -24,6 +24,6 @@ class WordAdmin(SummernoteModelAdmin):
 		model = Word
 
 admin.site.register(Event, EventAdmin)
-admin.site.register(Category, EventCategoryAdmin)
+# admin.site.register(Category, EventCategoryAdmin)
 admin.site.register(Word, WordAdmin)
 admin.site.register(Register, EventRegisterAdmin)
