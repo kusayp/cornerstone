@@ -28,7 +28,7 @@
                 <!-- BEGIN WIDGET CONTENT-->
                 <div class="widget__content">
                 <input type="hidden" value="{{ api_token }}" id="api_token"/>
-                <input type="hidden" id="request_context" value="{% if request.is_secure %}https:// {% else %}http://{% endif %}{{ request.get_host }}"/>
+                <input type="hidden" id="request_context" value="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}"/>
                   <div data-view="post" class="post post--grid post--masonry js-switch-view">
                     <!-- <div class="listing listing--grid js-isotope-grid" id="wwb_list"> 
             </div> -->
