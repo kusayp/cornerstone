@@ -1,0 +1,9 @@
+#virtual environment
+venv
+
+#databases
+db.sqlite3
+mine.db
+
+#documents
+pass
