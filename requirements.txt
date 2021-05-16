@@ -10,5 +10,6 @@ six==1.16.0
 sqlparse==0.4.1
 static==1.1.1
 static3==0.7.0
-django-summernote
-django-pagination
+django-summernote==0.8.11.6
+django-pagination==1.0.7
+drf-yasg==1.20.0
