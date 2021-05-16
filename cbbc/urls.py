@@ -20,10 +20,6 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
 
-from rest_framework_swagger.views import get_swagger_view
-
-# schema_view = get_swagger_view(title='Pastebin API')
-
 urlpatterns = [
     url(r'^', include('home.urls')),
     # url(r'^jet/', include('jet.urls', 'jet')),
