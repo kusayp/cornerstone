@@ -1,9 +1,11 @@
 #virtual environment
 venv
 
+config
+
 #databases
-db.sqlite3
-mine.db
+#config/db.sqlite3
+#config/mine.db
 
 #documents
-pass
+#config/pass
