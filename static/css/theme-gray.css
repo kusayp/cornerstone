@@ -2986,14 +2986,14 @@ input[type="radio"] + labe {
   background: #9da2b8;
 }
 
-.widget--cause {
+/* .widget--cause {
   background: url("../img/bg-donation.jpg") 50% 0 no-repeat;
   background-size: cover;
-}
+} */
 
-.widget--gallery {
+/* .widget--gallery {
   background: url("../img/bg-gallery.jpg") 50% 0 no-repeat;
-}
+} */
 
 .widget--gallery .widget__content {
   width: 100% !important;
@@ -3001,10 +3001,10 @@ input[type="radio"] + labe {
   padding-right: 0;
 }
 
-.widget--sermon {
+/* .widget--sermon {
   background: url("../img/bg-sermons.jpg") 50% 0 no-repeat;
   background-size: cover;
-}
+} */
 
 .widget--products {
   border-bottom: 1px solid #e6e6e6;
