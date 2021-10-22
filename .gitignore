@@ -6,6 +6,9 @@ config
 #databases
 #config/db.sqlite3
 #config/mine.db
+staticfiles
 
 #documents
 #config/pass
+
+.idea/

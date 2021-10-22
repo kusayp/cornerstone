@@ -1332,7 +1332,7 @@ input[type="radio"] + labe {
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
   -ms-flex-align: start;
-  -ms-grid-row-align: flex-start;
+  -ms-grid-row-align: initial;
   align-items: flex-start;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
@@ -2986,25 +2986,11 @@ input[type="radio"] + labe {
   background: #9da2b8;
 }
 
-/* .widget--cause {
-  background: url("../img/bg-donation.jpg") 50% 0 no-repeat;
-  background-size: cover;
-} */
-
-/* .widget--gallery {
-  background: url("../img/bg-gallery.jpg") 50% 0 no-repeat;
-} */
-
 .widget--gallery .widget__content {
   width: 100% !important;
   padding-left: 0;
   padding-right: 0;
 }
-
-/* .widget--sermon {
-  background: url("../img/bg-sermons.jpg") 50% 0 no-repeat;
-  background-size: cover;
-} */
 
 .widget--products {
   border-bottom: 1px solid #e6e6e6;
@@ -6824,14 +6810,6 @@ blockquote.pull-right:before {
 
 .tab--media .tab__vimeo {
   background: url("../img/logo-vimeo.png") 15px 3px no-repeat;
-  padding: 0 0 0 50px;
-  display: block;
-  text-align: left;
-  margin-bottom: 5px;
-}
-
-.tab--media .tab__soundcloud {
-  background: url("../img/logo-soundcloud.png") 0 3px no-repeat;
   padding: 0 0 0 50px;
   display: block;
   text-align: left;
@@ -16907,9 +16885,9 @@ a.fc-more:hover {
 }
 
 .flipper {
-  -webkit-perspective: 1000;
+  -webkit-perspective: initial;
   -ms-perspective: 1000;
-  perspective: 1000;
+  perspective: initial;
   -ms-transform: perspective(1000px);
   -moz-transform: perspective(1000px);
   -moz-transform-style: preserve-3d;

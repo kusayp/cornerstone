@@ -31,3 +31,5 @@ The Django rest framework helps to extend the app to other platforms, so for ins
 `python manage.py createsuperuser`
 
 `python manage.py runserver`
+
+whitenoise==5.3.0

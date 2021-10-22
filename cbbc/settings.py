@@ -52,7 +52,6 @@ THIRD_PARTY_APPS = [
     # 'rest_framework_swagger',
     'corsheaders',
     'storages',
-    'whitenoise',
 ]
 
 LOCAL_APPS = [
@@ -100,7 +99,6 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -200,7 +198,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AUTH_USER_MODEL = 'users.PCUser'
 
